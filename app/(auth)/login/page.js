@@ -1,5 +1,5 @@
-function page() {
-  return <div></div>;
-}
+import { LoginForm } from "@/app/_components/LoginForm";
 
-export default page;
+export default function page() {
+  return <LoginForm />;
+}
