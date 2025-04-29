@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { signUpSchema } from "../lib/zod";
 import { registerUserAction } from "../lib/action";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export function RegisterForm({ className, ...props }) {
   const {
@@ -19,10 +20,13 @@ export function RegisterForm({ className, ...props }) {
     resolver: zodResolver(signUpSchema),
   });
 
+  const router = useRouter();
+
   const onSubmit = async (data) => {
     try {
       await registerUserAction(data);
       toast.success("Account created successfully");
+      router.push("/login");
     } catch (error) {
       toast.error(error.message || "Something went wrong");
       console.log(error);

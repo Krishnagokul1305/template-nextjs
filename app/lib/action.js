@@ -7,7 +7,6 @@ import userModel from "./model/user.model";
 import bcrypt from "bcryptjs";
 
 export async function signInAction(data) {
-  console.log(data);
   await signIn("credentials", {
     email: data.email,
     password: data.password,
